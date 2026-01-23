@@ -1,5 +1,4 @@
 # Airflow 관련 제외 대상
-logs/
 plugins/
 config/
 airflow.db
@@ -7,10 +6,21 @@ airflow.db
 
 # Python 관련 제외 대상
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
 *.py[cod]
 *$py.class
 .venv/
 venv/
+*.egg-info/
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
 
 # Docker 관련
 postgres-db-volume/
