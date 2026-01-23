@@ -24,3 +24,7 @@ venv/
 
 # Docker 관련
 postgres-db-volume/
+
+# Git 관리에서 제외할 목록
+logs/
+*.log
