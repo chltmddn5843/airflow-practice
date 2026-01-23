@@ -2,7 +2,8 @@
 
 Legal-Link: Airflow 기반 법령/판례 RAG 챗봇 시스템본 프로젝트는 국가법령정보센터의 법령 및 판례 데이터를 Airflow를 통해 자동 수집(ETL)하고, 이를 **계층적 구조(조, 항, 문)**로 청킹하여 MariaDB와 Vector DB에 저장한 뒤, Claude 3.5를 이용해 정확한 법률 상담을 제공하는 자율형 RAG 시스템입니다.
 
-### 시스템 아키텍처 (Workflow)Data Pipeline (Airflow): 법령 및 판례 XML 데이터를 주기적으로 수집 및 정제.Structural Storage (MariaDB): 계층적 메타데이터(조/항/문)를 포함한 관계형 데이터 저장.Retrieval Strategy (Parent-Document Retrieval): 자식 청크(문 단위)로 검색하고 부모 컨텍스트(조 단위)로 답변 생성.Chat Interface: 스트리밍 응답을 지원하는 법률 특화 챗봇 UI.
+### 시스템 아키텍처 (Workflow)Data Pipeline (Airflow)
+- 법령 및 판례 XML 데이터를 주기적으로 수집 및 정제.Structural Storage (MariaDB): 계층적 메타데이터(조/항/문)를 포함한 관계형 데이터 저장.Retrieval Strategy (Parent-Document Retrieval): 자식 청크(문 단위)로 검색하고 부모 컨텍스트(조 단위)로 답변 생성.Chat Interface: 스트리밍 응답을 지원하는 법률 특화 챗봇 UI.
 
 ### 🚀 주요 기능 (Key Features)
 1. 지능형 ETL 프로세스 (Airflow)Extract: 국가법령정보센터 API 및 웹 크롤링을 통한 실시간 데이터 수집.Transform: 정규표현식을 활용하여 비정형 XML에서 [조] > [항] > [문] 단위의 계층 구조 추출.Load: MariaDB(메타데이터) 및 ChromaDB(벡터 데이터)에 동시 적재.
