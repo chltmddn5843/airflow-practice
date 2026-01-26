@@ -20,16 +20,15 @@ def extract_text_from_pdf(**kwargs):
     file_path = r"C:\Users\미소정보기술\Downloads\10ㆍ27법난 피해자의 명예회복 등에 관한 법률(법률)(제19592호)(20230808).pdf"
     
     # 실제 PDF 처리가 필요하면 fitz 사용:
-    # try:
-    #     import fitz
-    #     doc = fitz.open(file_path)
-    #     text = ""
-    #     for page in doc:
-    #         text += page.get_text()
-    #     return text
-    # except:
-    #     pass
-    
+    try:
+         import fitz
+         doc = fitz.open(file_path)
+         text = ""
+         for page in doc:
+             text += page.get_text()
+         return text
+    except:
+        pass
     # 테스트용 샘플 데이터
     text = """
     제 1 조 (목적)
