@@ -1,5 +1,5 @@
 import os
-from pymilvus import connections, Collection
+from pymilvus import connections, Collection, utility
 import numpy as np
 
 # Milvus 연결 정보 (회사망 예시)
@@ -8,21 +8,26 @@ MILVUS_PORT = 19530
 MILVUS_USER = os.getenv("MILVUS_USER", "root")
 MILVUS_PASSWORD = os.getenv("MILVUS_PASSWORD", "Milvus")
 MILVUS_DB = os.getenv("MILVUS_DB", "default")
-MILVUS_COLLECTION = os.getenv("MILVUS_COLLECTION", "legal_chunks")  # 실제 컬렉션명으로 변경
+MILVUS_COLLECTION = os.getenv("MILVUS_COLLECTION", "legal_chunks")  # 실제 컬렉션명으로 변
 
 # Milvus 연결 정보 (환경변수 우선, 없으면 로컬 기본값)
 # - 도커 컨테이너에서 접속 시 반드시 호스트의 실제 IP 사용
 # - 로컬 파이썬에서 접속 시 "127.0.0.1" 또는 "localhost" 사용
 
+if connections.has_connection("default"):
+	connections.disconnect("default")
 connections.connect(
-    alias="default",
-    host="localhost",
-    port=19530,
-    timeout=5
+	alias="default",
+	host="localhost",
+	port=19530,
+	timeout=5
 )
-print("Milvus 연결 성공!")
+print("Milvus 연결 성공!", connections.has_connection("default"))
+print("컬렉션 목록:", utility.list_collections())
 
 def connect_milvus():
+	if connections.has_connection("default"):
+		connections.disconnect("default")
 	connections.connect(
 		alias="default",
 		host=MILVUS_HOST,
