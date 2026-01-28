@@ -88,7 +88,7 @@ x-airflow-common:
 services:
   # Milvus Vector DB 추가
   milvus-standalone:
-    image: milvusdb/milvus:v2.4.6
+    image: milvusdb/milvus:v2.6.4
     container_name: milvus-standalone
     command: ["milvus", "run", "standalone"]
     environment:
